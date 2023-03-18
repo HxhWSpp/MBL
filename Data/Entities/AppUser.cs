@@ -6,12 +6,12 @@ namespace MBL.Data.Entities
     {
         public AppUser()
         {
-            ReadBooks = new HashSet<Book>();
-            ToReadBooks = new HashSet<Book>();
+            ReadBooks = new HashSet<UserReadBook>();
+            WantedBooks = new HashSet<UserWantedBook>();
         }
-        public virtual ICollection<Book> ReadBooks { get; set; }
+        public virtual ICollection<UserReadBook> ReadBooks { get; set; }
 
         
-        public virtual ICollection<Book> ToReadBooks { get; set; }
+        public virtual ICollection<UserWantedBook> WantedBooks { get; set; }
     }
 }

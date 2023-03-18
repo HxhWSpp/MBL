@@ -5,7 +5,7 @@
     ViewData["Title"] = "Details";
 }
 <div class="col-md-6">
-    <img class="d-block w-100" src="@Html.DisplayFor(model => model.imageLink)"></>
+    <img class="d-block w-100" src="@Html.DisplayFor(model => model.ImageLink)"></>
 </div>
 <ul class="list-group">
     <li class="list-group-item">@Html.DisplayFor(model => model.Title)</li>
@@ -15,6 +15,6 @@
     <li class="list-group-item">@Html.DisplayFor(model => model.Description)</li>
     <li class="list-group-item">@Html.DisplayFor(model => model.Link)</li>
 </ul>
-<a asp-area="" asp-controller="Books" asp-action="AddToList" asp-route-id="@Model.Id" class="btn btn-primary">Details</a>
+<a asp-area="" asp-controller="Books" asp-action="AddToList" asp-route-id="@Model.Id" class="btn btn-primary">Add To List</a>
 
 <button type="button" class="btn btn-primary">Add To List</button>

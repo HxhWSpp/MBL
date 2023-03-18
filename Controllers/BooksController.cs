@@ -6,16 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MBL.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using MBL.Data.Entities;
 
 namespace MBL.Controllers
 {
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Books
@@ -154,6 +159,29 @@ namespace MBL.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
+        public async Task<IActionResult> AddToList(int? id)
+        {
+            if (id == null || _context.Books == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Books
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            AppUser user = await _userManager.GetUserAsync(User);
+            user.ReadBooks.Add(new UserReadBook() { BookId = book.Id, UserId = user.Id });
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+            //return View(book);
+        }
         private bool BookExists(int id)
         {
           return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MBL.Data.Book>
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@book.imageLink" class="card-img-top" alt="...">
+                 <div class="card-body">
+                <h5 class="card-title">@book.Title</h5>
+                <p class="card-text">@book.Author</p>
+                    <a asp-area="" asp-controller="Books" asp-action="Details" asp-route-id="@book.Id" class="btn btn-primary">Details</a>
+                 </div>
+            </div>
+        }
+        
+    </div>
+</div>
+
+
+

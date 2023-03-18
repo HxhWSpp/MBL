@@ -1,0 +1,18 @@
+﻿@model MBL.Data.Book
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Details";
+}
+<div class="col-md-6">
+    <img class="d-block w-100" src="@Html.DisplayFor(model => model.imageLink)"></>
+</div>
+<ul class="list-group">
+    <li class="list-group-item">@Html.DisplayFor(model => model.Title)</li>
+    <li class="list-group-item">@Html.DisplayFor(model => model.Author)</li>
+    <li class="list-group-item">@Html.DisplayFor(model => model.Language)</li>
+    <li class="list-group-item">@Html.DisplayFor(model => model.Pages)</li>
+    <li class="list-group-item">@Html.DisplayFor(model => model.Description)</li>
+    <li class="list-group-item">@Html.DisplayFor(model => model.Link)</li>
+</ul>
+<button type="button" class="btn btn-primary">Add To List</button>

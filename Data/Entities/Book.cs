@@ -1,10 +1,9 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 
-namespace MBL.Data
+namespace MBL.Data.Entities
 {
-    public class Book
+    public class Book : BaseEntity
     {
-        public int Id { get; set; }
         public string Author { get; set; }
         public string imageLink { get; set; }
         public string Language { get; set; }       
@@ -13,6 +12,6 @@ namespace MBL.Data
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public int BookListId { get; set; }
+
     }
 }

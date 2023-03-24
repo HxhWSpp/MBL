@@ -160,7 +160,7 @@ namespace MBL.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> AddToList(int? id)
+        public async Task<IActionResult> AddToReadList(int? id)
         {
             if (id == null || _context.Books == null)
             {
@@ -182,9 +182,35 @@ namespace MBL.Controllers
             return RedirectToAction("Index");
             //return View(book);
         }
-        private bool BookExists(int id)
+
+        [Authorize]
+        public async Task<IActionResult> AddToWantedList(int? id)
+        {
+            if (id == null || _context.Books == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Books
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            AppUser user = await _userManager.GetUserAsync(User);
+            user.WantedBooks.Add(new UserWantedBook() { BookId = book.Id, UserId = user.Id });
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+            private bool BookExists(int id)
         {
           return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        
     }
 }

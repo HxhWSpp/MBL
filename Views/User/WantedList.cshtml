@@ -1,0 +1,27 @@
+﻿@using System.Security.Claims;
+@model IEnumerable<MBL.Data.Entities.UserWantedBook>
+
+@{
+    ViewData["Title"] = "WantedList";
+}
+
+
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Where(u => u.User.Id.Contains(userId)))
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Book.Title</h5>
+                    <p class="card-text">@item.Book.Author</p>
+                    <a asp-area="" asp-controller="Books" asp-action="Details" asp-route-id="@item.Book.Id" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

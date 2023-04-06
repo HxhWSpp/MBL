@@ -9,6 +9,9 @@ using MBL.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using MBL.Data.Entities;
+using MBL.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace MBL.Controllers
 {
@@ -16,19 +19,20 @@ namespace MBL.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BooksController(ApplicationDbContext context, UserManager<AppUser> userManager)
+        public BooksController(ApplicationDbContext context, UserManager<AppUser> userManager , IWebHostEnvironment hostEnvironment )
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = hostEnvironment;
         }
 
         // GET: Books
         public async Task<IActionResult> Index()
         {
-              return _context.Books != null ? 
-                          View(await _context.Books.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Books'  is null.");
+            var book = await _context.Books.ToListAsync();
+            return View(book);
         }
 
         // GET: Books/Details/5
@@ -49,26 +53,33 @@ namespace MBL.Controllers
             return View(book);
         }
 
-        // GET: Books/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Author,imageLink,Language,Link,Pages,Title,Description")] Book book)
+        public async Task<IActionResult> Create(BookModel model)
         {
             if (ModelState.IsValid)
             {
+                string uniqueFileName = UploadedFile(model);
+
+                Book book = new Book
+                {
+                    ReadBooks = model.ReadBooks,
+                    WantedBooks = model.WantedBooks,
+                    Author = model.Author,
+                    ImagePath = uniqueFileName,
+                    Language = model.Language,
+                    Link = model.Link,
+                    Pages = model.Pages,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Genre = model.Genre
+                };
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
+            return View();
         }
 
         // GET: Books/Edit/5
@@ -211,6 +222,23 @@ namespace MBL.Controllers
           return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        
+        private string UploadedFile(BookModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.Image != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "bookphotos");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Image.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
+
+
     }
 }

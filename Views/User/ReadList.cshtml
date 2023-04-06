@@ -15,7 +15,7 @@
         @foreach (var item in Model.Where(u => u.User.Id.Contains(userId)))
         {
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="/images/@item.Book.ImagePath" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">@item.Book.Title</h5>
                     <p class="card-text">@item.Book.Author</p>

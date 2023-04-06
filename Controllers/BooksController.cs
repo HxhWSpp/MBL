@@ -228,7 +228,7 @@ namespace MBL.Controllers
 
             if (model.Image != null)
             {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "bookphotos");
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))

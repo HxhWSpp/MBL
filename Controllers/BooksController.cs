@@ -21,10 +21,11 @@ namespace MBL.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BooksController(ApplicationDbContext context, UserManager<AppUser> userManager )
+        public BooksController(ApplicationDbContext context, UserManager<AppUser> userManager ,IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment;
             
         }
 

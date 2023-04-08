@@ -12,39 +12,119 @@
 }
 
 
+<body style="background-color: #a0ced9">
+<div class="container">
+    
+    <div class="row">       
+        <div class="col-md-6"> 
+            <img class="d-block w-100" src="~/images/@Model.ImagePath">
+        </div>
+            <div class="col-md-6">
+            
+           <div class="row">
+               <div class="col-md-12">
+                   <h1>@Model.Title</h1>
+               </div>
+           </div>
+           
+           <div class="row"> 
+               <div class="col-md-12 text-primary">
+                   <span class="col-form-label label-primary">By:</span>
+                    <span class="monospaced">@Model.Author</span>
 
-<div class="col-md-6">
-   
+                </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-12">
+                   <p class="description">
+                       @Model.Description
+                   </p>
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-12 text-primary">
+                    <span class="col-form-label label-primary">Language:</span>
+                    <span class="monospaced">@Model.Language</span>                  
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-12 text-primary">
+                    <span class="col-form-label label-primary">Pages:</span>
+                    <span class="monospaced">@Model.Pages</span>                  
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-12 text-primary">
+                    <span class="col-form-label label-primary">Genre:</span>
+                    <span class="monospaced">@Model.Genre</span>                  
+               </div>
+           <div class="row">
+               <div class="col-md-12 text-primary">
+                        <span class="col-form-label label-primary"></span>
+                        <span class="monospaced">@Model.Genre</span>
+
+                        <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</button>
+                        <ul class="dropdown-menu">
+                               
+                                <li>
+                                    @{
+                                        if (!Model.ReadBooks.Any(b => b.User.Id == userId))
+                                        {
+                                            <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AddToReadList" asp-route-id="@Model.Id" >Add To Read Book List</a>
+
+
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="RemoveFromReadList" asp-route-id="@Model.Id" >Remove From Read List</a>
+                                        }
+                                    }
+                                </li>
+                                <li>
+                                    
+                                    @{
+                                        if (!Model.WantedBooks.Any(b => b.User.Id == userId))
+                                        {
+                                            <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AddToWantedList" asp-route-id="@Model.Id">Add To Wanted Book List</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="RemoveFromWantedList" asp-route-id="@Model.Id">Remove From Wanted List</a>
+                                        }
+                                    }
+                                </li>
+                
+                         </ul>
+                    </div>           
+               </div>
+           </div>                
+                <div class="row">
+                    <div class="col-md-12 text-primary">
+                        <button onclick="location.href='@Model.Link'" type="button" class="btn btn-success">Buy now!</button>
+                    </div>
+                </div>
+    </div>
 </div>
-<ul class="list-group">
-    <li class="list-group-item">@Html.DisplayFor(model => model.Title)</li>
-    <li class="list-group-item">@Html.DisplayFor(model => model.Author)</li>
-    <li class="list-group-item">@Html.DisplayFor(model => model.Language)</li>
-    <li class="list-group-item">@Html.DisplayFor(model => model.Pages)</li>
-    <li class="list-group-item">@Html.DisplayFor(model => model.Description)</li>
-    <a href="@Model.Link">link text</a>
-</ul>
-@{
-    if (!Model.ReadBooks.Any(b => b.User.Id == userId))
-    {
-        <a asp-area="" asp-controller="Books" asp-action="AddToReadList" asp-route-id="@Model.Id" class="btn btn-primary">Add To Read Book List</a>
-        
-    }
-    else
-    {
-        <a asp-area="" asp-controller="User" asp-action="RemoveFromReadList" asp-route-id="@Model.Id" class="btn btn-primary">Remove From Read List</a>       
-    }
-}
-@{
-    if (!Model.WantedBooks.Any(b => b.User.Id == userId))
-    {    
-        <a asp-area="" asp-controller="Books" asp-action="AddToWantedList" asp-route-id="@Model.Id" class="btn btn-primary">Add To Wanted Book List</a>
-    }
-    else
-    {
-        <a asp-area="" asp-controller="User" asp-action="RemoveFromWantedList" asp-route-id="@Model.Id" class="btn btn-primary">Remove From Wanted List</a>
-    }
-}
+</body>
+<footer>
+    <a asp-area="" asp-controller="Books" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

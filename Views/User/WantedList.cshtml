@@ -9,7 +9,8 @@
 @{
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
-
+<body style="background-color: #a0ced9">
+    <h1>Wanted List</h1>
 <div class="container">
     <div class="row">
         @foreach (var item in Model.Where(u => u.User.Id.Contains(userId)))
@@ -25,3 +26,4 @@
         }
     </div>
 </div>
+</body>

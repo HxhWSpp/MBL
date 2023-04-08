@@ -4,7 +4,8 @@
     Layout = "_Layout";
 }
 
-
+<body style="background-color: #a0ced9">
+    <header></header>
 <div class="container">
     <div class="row">
         @foreach (var book in Model)
@@ -17,10 +18,12 @@
                     <a asp-area="" asp-controller="Books" asp-action="Details" asp-route-id="@book.Id" class="btn btn-primary">Details</a>
                  </div>
             </div>
-        }
-        
+        }      
     </div>
 </div>
-
+</body>
+<footer>
+    <a asp-area="" asp-controller="Books" asp-action="Create" asp-route-id="Create" class="btn btn-warning">Create</a>
+</footer>
 
 

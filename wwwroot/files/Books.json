@@ -1,0 +1,62 @@
+[
+  {
+    "Author": "Шарлот Бронте",
+    "ImagePath": "book1.png",
+    "Language": "Български",
+    "Link": "https://www.ciela.com/dzheyn-ear-ciela.html",
+    "Pages": "656",
+    "Title": "Джейн Еър",
+    "Description": "„Джейн Еър“ е най-четената и обичана книга на Шарлот Бронте. Силно повлиян от романтичната традиция, но считан за „революционен“ за времето си, „Джейн Еър“ е много повече от любовен роман – това е книга за мрачните мигове, преодолени чрез сила на характера, борбен дух и непоколебима вяра.",
+    "Genre": "Любовен роман"
+  },
+  {
+    "Author": "Дж.К. Роулинг",
+    "ImagePath": "book2.png",
+    "Language": "Български",
+    "Link": "https://www.ozone.bg/product/hari-potar-i-filosofskiyat-kamak-dizayn-i-ilyustratsii-minalima/",
+    "Pages": "368",
+    "Title": "Хари Потър",
+    "Description": "До този момент в живота на Хари Потър не съществуваше магия. Той живееше с противните Дърсли в техния дом на улица „Привит Драйв“ номер 4. Стаята му се намираше в килер под стълбището и за единайсет години не бе имал нито едно празненство за рождения си ден.Но в един хубав ден една сова донася мистериозно писмо. Писмо, което го кани да учи в невероятно място, наречено Училище за магия и вълшебство „Хогуортс“. Там той открива не само приятели, спорт, който се случва на летящи метли и магия във всичко – от класните стаи до храната, но и великата съдба, която е предначертала живота му… Ако успее да оцелее в сблъсъка с нея.",
+    "Genre": "Приключенски ,  Съвременна детска проза ,  Тийнейджърски ,  Фентъзи ,  Филмова екранизация"
+  },
+  {
+    "Author": "Robert Kiyosaki",
+    "ImagePath": "book3.png",
+    "Language": "Английски",
+    "Link": "https://bookoholic.net/product/9557/wisdom-from-rich-dad-poor-dad.html",
+    "Pages": "128",
+    "Title": "Rich Dad, Poor Dad",
+    "Description": "A mini abridgement of the #1 Personal Finance book of all time, Wisdom from Rich Dad Poor Dad tells the story of Robert Kiyosaki and his two dads,his real father and the father of his best friend, his rich dad,and the ways in which both men shaped his thoughts about investing. You don't need to earn a high income to be rich,find out the difference between working for money and having your money work for you.",
+    "Genre": "Личностно развитие"
+  },
+  {
+    "Author": "Yoko Akiyama",
+    "ImagePath": "book4.png",
+    "Language": "Английски",
+    "Link": "https://www.orangecenter.bg/my-hero-academia-team-up-missions-vol-1.html",
+    "Pages": "208",
+    "Title": "My Hero Academia Team-Up Missions, Vol. 1",
+    "Description": "„The aspiring heroes of My Hero Academia team up with pro heroes for action-packed missions!",
+    "Genre": "Science fiction, Action, Adventure"
+  },
+  {
+    "Author": "Омир",
+    "ImagePath": "book5.png",
+    "Language": "Български",
+    "Link": "https://www.book.store.bg/p24713/iliada-omir.html",
+    "Pages": "192",
+    "Title": "Илиада",
+    "Description": "„Това издание е част от серията Книги за ученика на издателство Пан. Поредицата представя литературни произведения, включени в учебната програма за 4. - 11. клас. Текстовете са съобразени с възрастта на читателите. Придружени са с критически анализи и оценки от различни гледни точки, с проблемни въпроси, тематични разработки, животопис - съобразно съвременните методически изисквания.",
+    "Genre": "Епос"
+  },
+  {
+    "Author": "Георги Марков",
+    "ImagePath": "book6.png",
+    "Language": "Български",
+    "Link": "https://www.ciela.com/zadochni-reportazhi-za-zadochna-balgariya-tom-1.html",
+    "Pages": "576",
+    "Title": "Задочните репортажи за България - Том 1",
+    "Description": "Задочни размисли от Георги Марков за една задочна родина",
+    "Genre": ""
+  }
+]
